@@ -703,6 +703,16 @@ def _build_evaluation_instance(
                     )
                 )
 
+    # An interactions data source is mutually exclusive with agent_data: when
+    # set, the backend fetches the interaction + Gemini Agent config and parses
+    # them into agent data server-side, so we must not also send agent_data.
+    interactions_data_source = getattr(eval_case, "interactions_data_source", None)
+    agent_data = (
+        None
+        if interactions_data_source is not None
+        else _eval_case_to_agent_data(eval_case, extracted_prompt, response_content)
+    )
+
     return types.EvaluationInstance(
         prompt=prompt_instance_data,
         response=_content_to_instance_data(response_content),
@@ -715,9 +725,8 @@ def _build_evaluation_instance(
         other_data=(
             types.MapInstance(map_instance=other_data_map) if other_data_map else None
         ),
-        agent_data=_eval_case_to_agent_data(
-            eval_case, extracted_prompt, response_content
-        ),
+        agent_data=agent_data,
+        interactions_data_source=interactions_data_source,
     )
 
 
