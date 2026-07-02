@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.160.0](https://github.com/googleapis/python-aiplatform/compare/v1.159.0...v1.160.0) (2026-07-02)
+
+
+### Features
+
+* Add revision_labels, revision_expire_time, revision_ttl, disable_memory_revisions, metadata, metadata_merge_strategy and overlap_event_count to Memory Bank IngestEvents API ([e169af9](https://github.com/googleapis/python-aiplatform/commit/e169af9ac0f56603be763466694b95fc2fd64e8c))
+* Onboard Vertex Model Garden to GenAI Python SDK: Add list_publisher_model_deploy_options support ([ce463e6](https://github.com/googleapis/python-aiplatform/commit/ce463e6820b7a92dfb312ad6d0a8d3da8314567c))
+
 ## [1.159.0](https://github.com/googleapis/python-aiplatform/compare/v1.158.0...v1.159.0) (2026-06-30)
 
 
